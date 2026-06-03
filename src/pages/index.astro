@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProductionCard from '../components/ProductionCard.astro';
+import PostCard from '../components/PostCard.astro';
+import { filterDrafts, sortPostsByDate } from '../lib/blog';
+
+const featured = (await getCollection('productions'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const latest = sortPostsByDate(filterDrafts(await getCollection('blog'))).slice(0, 5);
+---
+
+<BaseLayout title="wenanlin — Studio" description="Studio of wenanlin: products and writing.">
+  <section>
+    <h1>wenanlin</h1>
+    <p class="prose">Independent studio building software. Products and writing below.</p>
+  </section>
+
+  <section>
+    <h2>Featured</h2>
+    <div class="grid">
+      {
+        featured.map((item) => (
+          <ProductionCard
+            title={item.data.title}
+            description={item.data.description}
+            type={item.data.type}
+            featured={item.data.featured}
+            url={`/productions/${item.id}`}
+          />
+        ))
+      }
+    </div>
+    <p><a href="/productions">All productions →</a></p>
+  </section>
+
+  <section>
+    <h2>Latest posts</h2>
+    {
+      latest.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.date}
+          tags={post.data.tags}
+          url={`/blog/${post.id}`}
+        />
+      ))
+    }
+    <p><a href="/blog">All posts →</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+  }
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  section {
+    margin-bottom: var(--sp-7);
+  }
+</style>
