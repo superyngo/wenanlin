@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  url: string;
+}
+const { title, description, date, tags, url } = Astro.props;
+const formatted = date.toISOString().slice(0, 10);
+---
+
+<article class="post-card">
+  <a href={url}><h2>{title}</h2></a>
+  <p class="meta">
+    <time datetime={formatted}>{formatted}</time>
+    {tags.map((t) => <a class="tag" href={`/blog/tags/${t}`}>#{t}</a>)}
+  </p>
+  <p>{description}</p>
+</article>
+
+<style>
+  .post-card {
+    padding: var(--sp-4) 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .post-card h2 {
+    color: var(--text);
+    margin: 0 0 var(--sp-2);
+  }
+  .meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    display: flex;
+    gap: var(--sp-3);
+    margin: 0 0 var(--sp-2);
+  }
+</style>
