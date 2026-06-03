@@ -21,6 +21,22 @@
     async></script>
 </section>
 
+<script is:inline>
+  // Sync the Giscus iframe to the site's current theme once it loads (spec: keep comments consistent with site theme).
+  let giscusThemeSynced = false;
+  window.addEventListener('message', (event) => {
+    if (event.origin !== 'https://giscus.app') return;
+    if (giscusThemeSynced || !(event.data && event.data.giscus)) return;
+    giscusThemeSynced = true;
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
+    const iframe = document.querySelector('iframe.giscus-frame');
+    iframe?.contentWindow?.postMessage(
+      { giscus: { setConfig: { theme } } },
+      'https://giscus.app',
+    );
+  });
+</script>
+
 <style>
   .comments {
     margin-top: var(--sp-7);

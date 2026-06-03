@@ -19,6 +19,7 @@ const formatted = post.data.date.toISOString().slice(0, 10);
   title={`${post.data.title} — wenanlin`}
   description={post.data.description}
   ogImage={`/og/${post.id}.png`}
+  ogType="article"
 >
   <article class="prose" data-pagefind-body>
     <h1>{post.data.title}</h1>
