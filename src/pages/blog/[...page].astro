@@ -4,8 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import Pagination from '../../components/Pagination.astro';
-// TODO(Task 16): import Search and render it below once Search.astro exists.
-// import Search from '../../components/Search.astro';
+import Search from '../../components/Search.astro';
 import { filterDrafts, sortPostsByDate } from '../../lib/blog';
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -18,7 +17,7 @@ const { page } = Astro.props;
 
 <BaseLayout title="Blog — wenanlin" description="Writing from the studio.">
   <h1>Blog</h1>
-  {/* TODO(Task 16): <Search /> goes here */}
+  <Search />
   {
     page.data.map((post) => (
       <PostCard

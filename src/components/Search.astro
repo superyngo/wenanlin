@@ -1,0 +1,13 @@
+---
+---
+
+<div id="search"></div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+<script>
+  // @ts-expect-error - injected at build by Pagefind
+  import { PagefindUI } from '@pagefind/default-ui';
+  window.addEventListener('DOMContentLoaded', () => {
+    new PagefindUI({ element: '#search', showSubResults: true });
+  });
+</script>
