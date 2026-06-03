@@ -1,0 +1,28 @@
+{
+  "name": "wenanlin-studio",
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/newsreader": "^5.2.10",
+    "@fontsource/noto-sans-tc": "^5.2.9",
+    "astro": "^5.18.2",
+    "astro-og-canvas": "^0.11.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@pagefind/default-ui": "^1.5.2",
+    "pagefind": "^1.5.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.8"
+  }
+}
