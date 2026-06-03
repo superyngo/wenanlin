@@ -1,0 +1,88 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+const links = [
+  { href: '/productions', label: 'Productions' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+---
+
+<header class="container site-header">
+  <a href="/" class="brand">wenanlin</a>
+
+  <button id="nav-toggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+  <nav id="site-nav" class="site-nav">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <ThemeToggle />
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--sp-4);
+    padding-bottom: var(--sp-4);
+    border-bottom: 1px solid var(--border);
+  }
+  .brand {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--text);
+  }
+  .site-nav {
+    display: flex;
+    gap: var(--sp-4);
+    align-items: center;
+  }
+  .site-nav a {
+    color: var(--text);
+  }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+  }
+  @media (max-width: 640px) {
+    .nav-toggle {
+      display: inline-flex;
+    }
+    .site-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--bg);
+      gap: var(--sp-5);
+      font-size: 1.5rem;
+    }
+    .site-nav.open {
+      display: flex;
+    }
+  }
+</style>
+
+<script is:inline>
+  const toggle = document.getElementById('nav-toggle');
+  const nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    const setOpen = (open) => {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

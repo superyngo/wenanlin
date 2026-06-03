@@ -1,0 +1,29 @@
+---
+const social = [
+  { href: 'mailto:superyngo@gmail.com', label: 'Email' },
+  { href: 'https://github.com/superyngo', label: 'GitHub' },
+];
+---
+
+<footer class="container site-footer">
+  <div class="links">
+    {social.map((s) => <a href={s.href}>{s.label}</a>)}
+    <a href="/privacy">Privacy</a>
+  </div>
+  <p>© {new Date().getFullYear()} wenanlin</p>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: var(--sp-8);
+    padding-top: var(--sp-5);
+    padding-bottom: var(--sp-6);
+    color: var(--text-muted);
+  }
+  .links {
+    display: flex;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-2);
+  }
+</style>
