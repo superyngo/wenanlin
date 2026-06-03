@@ -1,0 +1,29 @@
+:root {
+  --bg: #fafaf8;
+  --text: #1a1a1a;
+  --text-muted: #6b6b6b;
+  --accent: #2d5bff;
+  --border: #e5e3de;
+
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-sans: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 16px;
+  --sp-4: 24px;
+  --sp-5: 32px;
+  --sp-6: 48px;
+  --sp-7: 64px;
+  --sp-8: 96px;
+
+  --measure: 68ch;
+}
+
+:root[data-theme='dark'] {
+  --bg: #16161a;
+  --text: #ededed;
+  --text-muted: #a1a1a1;
+  --accent: #7aa2ff;
+  --border: #2a2a30;
+}
