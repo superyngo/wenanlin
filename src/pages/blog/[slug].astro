@@ -1,0 +1,40 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Giscus from '../../components/Giscus.astro';
+import { filterDrafts } from '../../lib/blog';
+
+export const getStaticPaths = (async () => {
+  const posts = filterDrafts(await getCollection('blog'));
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formatted = post.data.date.toISOString().slice(0, 10);
+---
+
+<BaseLayout
+  title={`${post.data.title} — wenanlin`}
+  description={post.data.description}
+  ogImage={`/og/${post.id}.png`}
+>
+  <article class="prose" data-pagefind-body>
+    <h1>{post.data.title}</h1>
+    <p class="meta">
+      <time datetime={formatted}>{formatted}</time>
+      {post.data.tags.map((t) => <a href={`/blog/tags/${t}`}>#{t}</a>)}
+    </p>
+    <Content />
+  </article>
+  <Giscus />
+</BaseLayout>
+
+<style>
+  .meta {
+    color: var(--text-muted);
+    display: flex;
+    gap: var(--sp-3);
+  }
+</style>
