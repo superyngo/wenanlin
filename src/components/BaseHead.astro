@@ -33,3 +33,9 @@ const og = new URL(ogImage ?? '/og-default.png', Astro.site);
   const theme = stored ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.dataset.theme = theme;
 </script>
+
+<script
+  is:inline
+  defer
+  src="https://static.cloudflareinsights.com/beacon.min.js"
+  data-cf-beacon='{"token": "REPLACE_TOKEN"}'></script>
