@@ -13,8 +13,9 @@ Built the minimalist editorial studio website as an Astro 5 static site for Clou
 - **Tested helpers (TDD):** `src/lib/blog.ts` (`filterDrafts`, `sortPostsByDate`, `getAllTags`) and `src/lib/stats.ts` (build-time GitHub/App Store stat fetchers with graceful fallback to frontmatter baselines) — 9 Vitest unit tests.
 - **Design system:** editorial-minimal tokens + global styles (serif headings / sans body, light & dark palettes).
 - **Layout & components:** `BaseHead` (SEO/OG/RSS autodiscovery + no-flash theme), `Header` (desktop nav + accessible mobile drawer with Escape-to-close), `Footer`, `ThemeToggle` (persisted + Giscus theme sync), `BaseLayout`.
-- **Pages:** home (featured productions + latest posts), productions list (responsive grid + client-side type filter) and detail (build-time stats), paginated blog list, blog post (Giscus comments, Pagefind body), paginated tag pages, about, privacy, 404.
+- **Pages:** home (featured productions + latest posts), productions list (responsive grid + client-side type filter) and detail (build-time stats), paginated blog list (with a client-side tag filter), blog post (Giscus comments, Pagefind body), paginated tag pages, about, privacy, 404.
 - **Feeds & search & images:** RSS feed, Pagefind full-text search, per-post build-time OG image generation (`astro-og-canvas`).
+- **SEO & theme consistency:** `og:type=article` for blog posts (`website` elsewhere); Giscus comment iframe syncs to the site's theme on load as well as on toggle.
 - **Analytics & docs:** Cloudflare Web Analytics beacon and `README.md` with a Cloudflare Pages deploy guide + post-setup checklist.
 
 Verified: `npx vitest run` (9/9 pass), `npx astro check` (0 errors), `npm run build` (Astro + Pagefind succeed), and a `npm run preview` smoke test of all routes (home, productions + filter, product detail, blog + pagination, post + Giscus, tag page, search, about, privacy, RSS, sitemap, OG image, 404).
