@@ -10,7 +10,7 @@ const { title, description, date, tags, url } = Astro.props;
 const formatted = date.toISOString().slice(0, 10);
 ---
 
-<article class="post-card">
+<article class="post-card" data-tags={JSON.stringify(tags)}>
   <a href={url}><h2>{title}</h2></a>
   <p class="meta">
     <time datetime={formatted}>{formatted}</time>

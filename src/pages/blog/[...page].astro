@@ -13,11 +13,20 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
+const pageTags = [...new Set(page.data.flatMap((p) => p.data.tags))].sort((a, b) => a.localeCompare(b));
 ---
 
 <BaseLayout title="Blog — wenanlin" description="Writing from the studio.">
   <h1>Blog</h1>
   <Search />
+  {pageTags.length > 0 && (
+    <div class="tag-filters" role="group" aria-label="Filter posts by tag">
+      <button type="button" data-tag="all" class="active">All</button>
+      {pageTags.map((t) => (
+        <button type="button" data-tag={t}>#{t}</button>
+      ))}
+    </div>
+  )}
   {
     page.data.map((post) => (
       <PostCard
@@ -36,3 +45,39 @@ const { page } = Astro.props;
     lastPage={page.lastPage}
   />
 </BaseLayout>
+
+<style>
+  .tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    margin: var(--sp-4) 0;
+  }
+  .tag-filters button {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0 var(--sp-3);
+    cursor: pointer;
+  }
+  .tag-filters button.active {
+    color: var(--text);
+    border-color: var(--accent);
+  }
+</style>
+
+<script is:inline>
+  const tagButtons = document.querySelectorAll('.tag-filters button');
+  const postCards = document.querySelectorAll('.post-card[data-tags]');
+  tagButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tagButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.getAttribute('data-tag');
+      postCards.forEach((c) => {
+        const tags = JSON.parse(c.getAttribute('data-tags') || '[]');
+        c.style.display = f === 'all' || tags.includes(f) ? '' : 'none';
+      });
+    });
+  });
+</script>
