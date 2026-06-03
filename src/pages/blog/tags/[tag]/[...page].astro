@@ -1,0 +1,41 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import PostCard from '../../../../components/PostCard.astro';
+import Pagination from '../../../../components/Pagination.astro';
+import { filterDrafts, sortPostsByDate, getAllTags } from '../../../../lib/blog';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = sortPostsByDate(filterDrafts(await getCollection('blog')));
+  const tags = getAllTags(posts);
+  return tags.flatMap(({ tag }) => {
+    const tagged = posts.filter((p) => p.data.tags.includes(tag));
+    return paginate(tagged, { params: { tag }, pageSize: 10 });
+  });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+---
+
+<BaseLayout title={`#${tag} — wenanlin`} description={`Posts tagged ${tag}.`}>
+  <h1>#{tag}</h1>
+  {
+    page.data.map((post) => (
+      <PostCard
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date}
+        tags={post.data.tags}
+        url={`/blog/${post.id}`}
+      />
+    ))
+  }
+  <Pagination
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    currentPage={page.currentPage}
+    lastPage={page.lastPage}
+  />
+</BaseLayout>
