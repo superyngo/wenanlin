@@ -1,0 +1,22 @@
+---
+---
+
+<button id="theme-toggle" aria-label="Toggle dark mode" type="button">🌓</button>
+
+<script is:inline>
+  const btn = document.getElementById('theme-toggle');
+  function syncGiscus(theme) {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme === 'dark' ? 'dark' : 'light' } } },
+      'https://giscus.app',
+    );
+  }
+  btn?.addEventListener('click', () => {
+    const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+    syncGiscus(next);
+  });
+</script>
