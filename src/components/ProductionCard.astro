@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  type: 'github' | 'appstore';
+  featured: boolean;
+  url: string;
+}
+const { title, description, type, featured, url } = Astro.props;
+---
+
+<a class:list={['card', { featured }]} href={url} data-type={type}>
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <span class="badge">{type}</span>
+</a>
+
+<style>
+  .card {
+    display: block;
+    padding: var(--sp-4);
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .card.featured {
+    border-color: var(--accent);
+  }
+  .badge {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+  }
+</style>

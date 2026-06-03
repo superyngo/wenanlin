@@ -1,0 +1,64 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { fetchGithubStats, fetchAppStoreStats } from '../../lib/stats';
+
+export const getStaticPaths = (async () => {
+  const items = await getCollection('productions');
+  return Promise.all(
+    items.map(async (item) => {
+      let stars: number | null = item.data.stars ?? null;
+      let version: string | null = item.data.version ?? null;
+      let rating: number | null = null;
+
+      if (item.data.type === 'github' && item.data.repo) {
+        const s = await fetchGithubStats(item.data.repo, {
+          stars: item.data.stars ?? null,
+          version: item.data.version ?? null,
+        });
+        stars = s.stars;
+        version = s.version;
+      } else if (item.data.type === 'appstore' && item.data.appStoreId) {
+        const s = await fetchAppStoreStats(item.data.appStoreId, {
+          rating: null,
+          version: item.data.version ?? null,
+        });
+        rating = s.rating;
+        version = s.version;
+      }
+
+      return { params: { slug: item.id }, props: { item, stars, version, rating } };
+    }),
+  );
+}) satisfies GetStaticPaths;
+
+const { item, stars, version, rating } = Astro.props;
+const { Content } = await render(item);
+---
+
+<BaseLayout title={`${item.data.title} — wenanlin`} description={item.data.description}>
+  <article class="prose">
+    <h1>{item.data.title}</h1>
+    <p class="stats">
+      {stars !== null && <span>★ {stars}</span>}
+      {version && <span>{version}</span>}
+      {rating !== null && <span>{rating.toFixed(1)} rating</span>}
+      {item.data.repo && <a href={`https://github.com/${item.data.repo}`}>GitHub</a>}
+      {
+        item.data.appStoreId && (
+          <a href={`https://apps.apple.com/app/id${item.data.appStoreId}`}>App Store</a>
+        )
+      }
+    </p>
+    <Content />
+  </article>
+</BaseLayout>
+
+<style>
+  .stats {
+    display: flex;
+    gap: var(--sp-3);
+    color: var(--text-muted);
+  }
+</style>
