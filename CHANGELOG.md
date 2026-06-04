@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Add tag filter to productions
+
+- Add an optional `tags` array to the productions schema and surface tags on `ProductionCard` (data attribute + inline chips).
+- Add a second filter row to the productions list (mirroring the blog tag filter) that combines with the existing GitHub/App Store source filter via AND.
+- Pass `tags` through from the home page and productions list; tag the sample production for demonstration.
+
 ### 2026-06-04 — Pre-launch hardening
 
 - Wrap `localStorage` access in the no-flash theme scripts (`BaseHead.astro` read, `ThemeToggle.astro` write) in try/catch so Safari private mode's `SecurityError` no longer breaks theming.

@@ -2,6 +2,7 @@
 title: Sample CLI
 description: A command-line tool.
 type: github
+tags: [cli, open-source]
 repo: octocat/Hello-World
 featured: true
 order: 1

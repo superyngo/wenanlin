@@ -3,16 +3,18 @@ interface Props {
   title: string;
   description: string;
   type: 'github' | 'appstore';
+  tags: string[];
   featured: boolean;
   url: string;
 }
-const { title, description, type, featured, url } = Astro.props;
+const { title, description, type, tags, featured, url } = Astro.props;
 ---
 
-<a class:list={['card', { featured }]} href={url} data-type={type}>
+<a class:list={['card', { featured }]} href={url} data-type={type} data-tags={JSON.stringify(tags)}>
   <h3>{title}</h3>
   <p>{description}</p>
   <span class="badge">{type}</span>
+  {tags.map((t) => <span class="tag">#{t}</span>)}
 </a>
 
 <style>
@@ -29,5 +31,10 @@ const { title, description, type, featured, url } = Astro.props;
     color: var(--text-muted);
     font-size: 0.8rem;
     text-transform: uppercase;
+  }
+  .tag {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-left: var(--sp-2);
   }
 </style>

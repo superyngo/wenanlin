@@ -27,6 +27,7 @@ const latest = sortPostsByDate(filterDrafts(await getCollection('blog'))).slice(
             title={item.data.title}
             description={item.data.description}
             type={item.data.type}
+            tags={item.data.tags}
             featured={item.data.featured}
             url={`/productions/${item.id}`}
           />

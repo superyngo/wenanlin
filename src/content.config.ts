@@ -18,6 +18,7 @@ const productions = defineCollection({
     title: z.string(),
     description: z.string(),
     type: z.enum(['github', 'appstore']),
+    tags: z.array(z.string()).default([]),
     repo: z.string().optional(),
     appStoreId: z.string().optional(),
     featured: z.boolean().default(false),

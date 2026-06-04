@@ -4,16 +4,26 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProductionCard from '../../components/ProductionCard.astro';
 
 const items = (await getCollection('productions')).sort((a, b) => a.data.order - b.data.order);
+const allTags = [...new Set(items.flatMap((i) => i.data.tags))].sort((a, b) => a.localeCompare(b));
 ---
 
 <BaseLayout title="Productions — wenanlin" description="Products and open-source work.">
   <h1>Productions</h1>
 
-  <div class="filters">
-    <button data-filter="all" class="active">All</button>
-    <button data-filter="github">GitHub</button>
-    <button data-filter="appstore">App Store</button>
+  <div class="filters" role="group" aria-label="Filter by source">
+    <button data-type-filter="all" class="active">All</button>
+    <button data-type-filter="github">GitHub</button>
+    <button data-type-filter="appstore">App Store</button>
   </div>
+
+  {allTags.length > 0 && (
+    <div class="filters tag-filters" role="group" aria-label="Filter by tag">
+      <button data-tag="all" class="active">All</button>
+      {allTags.map((t) => (
+        <button data-tag={t}>#{t}</button>
+      ))}
+    </div>
+  )}
 
   <div class="grid">
     {
@@ -22,6 +32,7 @@ const items = (await getCollection('productions')).sort((a, b) => a.data.order -
           title={item.data.title}
           description={item.data.description}
           type={item.data.type}
+          tags={item.data.tags}
           featured={item.data.featured}
           url={`/productions/${item.id}`}
         />
@@ -48,7 +59,11 @@ const items = (await getCollection('productions')).sort((a, b) => a.data.order -
   }
   .filters {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--sp-3);
+    margin-bottom: var(--sp-3);
+  }
+  .tag-filters {
     margin-bottom: var(--sp-4);
   }
   .filters button {
@@ -65,16 +80,35 @@ const items = (await getCollection('productions')).sort((a, b) => a.data.order -
 </style>
 
 <script is:inline>
-  const buttons = document.querySelectorAll('.filters button');
+  const typeButtons = document.querySelectorAll('[data-type-filter]');
+  const tagButtons = document.querySelectorAll('[data-tag]');
   const cards = document.querySelectorAll('.grid [data-type]');
-  buttons.forEach((btn) => {
+  let activeType = 'all';
+  let activeTag = 'all';
+
+  function apply() {
+    cards.forEach((c) => {
+      const matchType = activeType === 'all' || c.getAttribute('data-type') === activeType;
+      const tags = JSON.parse(c.getAttribute('data-tags') || '[]');
+      const matchTag = activeTag === 'all' || tags.includes(activeTag);
+      c.style.display = matchType && matchTag ? '' : 'none';
+    });
+  }
+
+  typeButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
-      buttons.forEach((b) => b.classList.remove('active'));
+      typeButtons.forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
-      const f = btn.getAttribute('data-filter');
-      cards.forEach((c) => {
-        c.style.display = f === 'all' || c.getAttribute('data-type') === f ? '' : 'none';
-      });
+      activeType = btn.getAttribute('data-type-filter');
+      apply();
+    });
+  });
+  tagButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tagButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeTag = btn.getAttribute('data-tag');
+      apply();
     });
   });
 </script>
