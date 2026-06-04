@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Set real social links
+
+- Update `Footer.astro` social links to the real Email (`turkeyang@turkeyang.net`), Facebook page, and GitHub.
+
 ### 2026-06-04 — Wire up Giscus comments
 
 - Replace the `REPO` / `REPLACE_REPO_ID` / `REPLACE_CATEGORY_ID` placeholders in `Giscus.astro` with the real `superyngo/wenanlin` repo and Announcements category IDs.
