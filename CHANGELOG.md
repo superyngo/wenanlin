@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Set production domain
+
+- Point `astro.config.mjs` `site` to the production custom domain `https://www.turkeyang.net` (was the `*.pages.dev` placeholder) so sitemap and OG absolute URLs resolve correctly.
+
 ### 2026-06-04 — Initial studio website build
 
 Built the minimalist editorial studio website as an Astro 5 static site for Cloudflare Pages, executed task-by-task from `docs/superpowers/plans/2026-06-03-studio-website.md` with spec-compliance + code-quality review after each task.
