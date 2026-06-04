@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Wire up Cloudflare Web Analytics token
+
+- Replace the `REPLACE_TOKEN` placeholder in `BaseHead.astro` with the real Cloudflare Web Analytics beacon token.
+
 ### 2026-06-04 — Set production domain
 
 - Point `astro.config.mjs` `site` to the production custom domain `https://www.turkeyang.net` (was the `*.pages.dev` placeholder) so sitemap and OG absolute URLs resolve correctly.
