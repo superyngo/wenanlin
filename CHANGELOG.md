@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Pre-launch hardening
+
+- Wrap `localStorage` access in the no-flash theme scripts (`BaseHead.astro` read, `ThemeToggle.astro` write) in try/catch so Safari private mode's `SecurityError` no longer breaks theming.
+- Preload the Newsreader 500 headline woff2 (imported for a stable hashed URL that matches the bundled `@fontsource` CSS) to cut FOUT on the most visible text.
+- Add an optional `rating` baseline field to the productions schema (parallels `stars`) and use it as the App Store fallback in the production detail page.
+
 ### 2026-06-04 — Add real default OG image
 
 - Replace the 1×1 `public/og-default.png` placeholder with a real 1200×630 share image reading "Wenanlin企業社", generated via `astro-og-canvas` in the same dark editorial style as the per-post OG images (Heiti TC for the Chinese glyphs).

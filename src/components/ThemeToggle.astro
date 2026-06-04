@@ -16,7 +16,11 @@
   btn?.addEventListener('click', () => {
     const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = next;
-    localStorage.setItem('theme', next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch {
+      // Safari private mode throws SecurityError; theme still applies for this session.
+    }
     syncGiscus(next);
   });
 </script>

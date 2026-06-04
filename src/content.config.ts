@@ -24,6 +24,7 @@ const productions = defineCollection({
     order: z.number().default(0),
     // Decorative baseline values; refreshed from API at build, fall back to these.
     stars: z.number().optional(),
+    rating: z.number().optional(),
     version: z.string().optional(),
   }),
 });

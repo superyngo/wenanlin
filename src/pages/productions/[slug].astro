@@ -10,7 +10,7 @@ export const getStaticPaths = (async () => {
     items.map(async (item) => {
       let stars: number | null = item.data.stars ?? null;
       let version: string | null = item.data.version ?? null;
-      let rating: number | null = null;
+      let rating: number | null = item.data.rating ?? null;
 
       if (item.data.type === 'github' && item.data.repo) {
         const s = await fetchGithubStats(item.data.repo, {
@@ -21,7 +21,7 @@ export const getStaticPaths = (async () => {
         version = s.version;
       } else if (item.data.type === 'appstore' && item.data.appStoreId) {
         const s = await fetchAppStoreStats(item.data.appStoreId, {
-          rating: null,
+          rating: item.data.rating ?? null,
           version: item.data.version ?? null,
         });
         rating = s.rating;
