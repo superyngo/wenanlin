@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Wire up Giscus comments
+
+- Replace the `REPO` / `REPLACE_REPO_ID` / `REPLACE_CATEGORY_ID` placeholders in `Giscus.astro` with the real `superyngo/wenanlin` repo and Announcements category IDs.
+
 ### 2026-06-04 — Wire up Cloudflare Web Analytics token
 
 - Replace the `REPLACE_TOKEN` placeholder in `BaseHead.astro` with the real Cloudflare Web Analytics beacon token.
