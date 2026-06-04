@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-04 — Add real default OG image
+
+- Replace the 1×1 `public/og-default.png` placeholder with a real 1200×630 share image reading "Wenanlin企業社", generated via `astro-og-canvas` in the same dark editorial style as the per-post OG images (Heiti TC for the Chinese glyphs).
+
 ### 2026-06-04 — Set real social links
 
 - Update `Footer.astro` social links to the real Email (`turkeyang@turkeyang.net`), Facebook page, and GitHub.
