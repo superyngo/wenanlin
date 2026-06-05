@@ -4,6 +4,12 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-05 — Add production pages for six tools
+
+- Add production content for Wenget, sshi, AGM, wenv, wedi, and wappman (all `type: github`), each with overview, features, and install sections.
+- Add TUI screenshots under `public/productions/<slug>/tui.png` for sshi, AGM, wenv, and wedi.
+- Remove the `sample-cli.md` placeholder production.
+
 ### 2026-06-04 — Add tag filter to productions
 
 - Add an optional `tags` array to the productions schema and surface tags on `ProductionCard` (data attribute + inline chips).
