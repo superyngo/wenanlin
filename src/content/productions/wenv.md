@@ -33,5 +33,10 @@ statements, and lets you move entries between files safely.
 ## Install
 
 ```bash
+# via Wenget
+wenget install wenv
+```
+
+```bash
 cargo install wenv
 ```

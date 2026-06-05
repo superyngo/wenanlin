@@ -33,6 +33,11 @@ everywhere.
 ## Install
 
 ```bash
+# via Wenget
+wenget install agm
+```
+
+```bash
 # Linux / macOS
 curl -fsSL https://gist.githubusercontent.com/superyngo/a6b786af38b8b4c2ce15a70ae5387bd7/raw/gpinstall.sh | APP_NAME="agm" REPO="superyngo/agm" bash
 ```

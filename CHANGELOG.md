@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-06-05 — Add Wenget install option to productions
+
+- Add a `wenget install <name>` block to the sshi, AGM, wenv, and wappman production install sections (wedi already had one; Wenget cannot self-install).
+
 ### 2026-06-05 — Add production pages for six tools
 
 - Add production content for Wenget, sshi, AGM, wenv, wedi, and wappman (all `type: github`), each with overview, features, and install sections.

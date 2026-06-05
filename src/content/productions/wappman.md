@@ -30,6 +30,11 @@ watching.
 ## Install
 
 ```bash
+# via Wenget
+wenget install wappman
+```
+
+```bash
 git clone https://github.com/superyngo/wappman.git
 cd wappman
 chmod +x wappman

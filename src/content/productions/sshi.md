@@ -33,6 +33,11 @@ results and configuring checks.
 ## Install
 
 ```bash
+# via Wenget
+wenget install sshi
+```
+
+```bash
 # macOS / Linux
 cargo install sshi
 ```
