@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-07-18 — Add confy production page
+
+- Add production content for confy (`type: github`, v0.16.0) with overview, features, and a link to the live web UI at confy.turkeyang.net.
+
 ### 2026-06-05 — Add Wenget install option to productions
 
 - Add a `wenget install <name>` block to the sshi, AGM, wenv, and wappman production install sections (wedi already had one; Wenget cannot self-install).
