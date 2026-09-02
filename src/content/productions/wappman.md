@@ -23,6 +23,7 @@ watching.
 - Service lifecycle management for multiple services at once
 - Periodic health monitoring with configurable intervals
 - File watching with auto-restart on config changes
+- Custom lifecycle hooks (start/restart/crash) with full event context via env vars
 - Real-time status and uptime reporting
 - Centralized logging with automatic rotation
 - Crash recovery with retry limits and crash notifications

@@ -7,7 +7,7 @@ repo: superyngo/agm
 featured: true
 order: 3
 stars: 0
-version: v0.11.0
+version: v0.15.0
 ---
 
 ## Overview
@@ -23,8 +23,9 @@ everywhere.
 - Symlink management (junctions + hardlinks on Windows)
 - Install skills and agents from local paths or git repos, with auto-update
 - Interactive ratatui-based TUI to browse and toggle skills/agents
+- Multi-select with range-select and bulk install/uninstall in the Source Manager
 - Registry-driven: add tools by editing TOML, no code changes
-- At-a-glance link health and tool-install status
+- At-a-glance link health, tool-install status, and in-app Help/About panels
 
 ## Screenshot
 

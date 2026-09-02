@@ -7,7 +7,7 @@ repo: superyngo/wedi
 featured: false
 order: 5
 stars: 0
-version: v0.8.7
+version: v0.10.0
 ---
 
 ## Overview
@@ -21,11 +21,12 @@ including terminals without Shift-key selection.
 
 - Cross-platform with fast startup
 - Syntax highlighting for 219+ languages with incremental caching
-- Undo/redo, search, comment toggling, and go-to-line
+- Undo/redo, search with match highlighting, comment toggling, and go-to-line
 - Clipboard copy/cut/paste and selection mode
-- Ctrl+S selection mode for limited terminals
+- Alt+S selection mode for limited terminals
 - Tab/Shift+Tab indentation and fast keyboard navigation
 - Chinese character support and 7 built-in themes
+- In-editor Help/About panel and conventional keybindings (F1, F3/Shift+F3, Ctrl+S save)
 
 ## Screenshot
 

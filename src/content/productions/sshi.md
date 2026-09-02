@@ -7,7 +7,7 @@ repo: superyngo/sshi
 featured: true
 order: 2
 stars: 0
-version: v1.3.2
+version: v1.7.0
 ---
 
 ## Overview
@@ -22,9 +22,10 @@ results and configuring checks.
 - Host discovery from `~/.ssh/config` with shell-type detection
 - System snapshots for historical tracking
 - File sync across hosts (collect → decide → distribute)
-- scp-style file copy to many hosts at once
-- Parallel remote command and script execution
-- Interactive TUI for snapshot data, filters, and checks
+- scp-style file copy to many hosts at once, streaming with no size cap
+- Parallel remote command and script execution, with SSH keepalives
+- Interactive TUI with passphrase-protected key support and Emacs-style input editing
+- Scrollable Help/Info/Export popups with an in-app About panel; honors `NO_COLOR`
 
 ## Screenshot
 

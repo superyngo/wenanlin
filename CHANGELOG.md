@@ -4,6 +4,16 @@ All notable changes to this project are documented here.
 
 ## Unreleased
 
+### 2026-09-02 — Refresh production pages to latest releases
+
+- Update confy to v1.0.0 (first stable release): describe the new VS Code custom editor, native desktop app (now on the Microsoft Store), JSON Schema-aware validation, and type picker; add a `vscode` tag and VS Code Marketplace/Open VSX links.
+- Update wenv (v0.18.2 → v0.21.0): describe the visual copy/move placement flow, inline single-line editing, and the new Help/About panel with `NO_COLOR` support.
+- Update AGM (v0.11.0 → v0.15.0): describe Source Manager multi-select/bulk install and the new Help/About TUI panels.
+- Update sshi (v1.3.2 → v1.7.0): describe streaming SFTP transfers, SSH keepalives, passphrase-key TUI support, and scrollable Help/Info/About popups.
+- Update wedi (v0.8.7 → v0.10.0): fix the stale "Ctrl+S selection mode" feature bullet to "Alt+S" (Ctrl+S now saves as of v0.10.0); describe search-match highlighting and the new Help/About panel.
+- Update Wenget (v3.4.1 → v3.8.7): describe SHA-256 checksum verification for downloaded release assets; correct the `repo` field casing to `superyngo/wenget` (repo renamed from `Wenget`).
+- Update wappman: describe the custom lifecycle-hook environment variables (`WAPPMAN_EVENT_*`) shipped in v1.0.3; version unchanged (already current at v1.0.6).
+
 ### 2026-07-18 — Add confy production page
 
 - Add production content for confy (`type: github`, v0.16.0) with overview, features, and a link to the live web UI at confy.turkeyang.net.

@@ -3,11 +3,11 @@ title: Wenget
 description: A cross-platform package manager for GitHub binaries, written in Rust.
 type: github
 tags: [rust, cli, package-manager, cross-platform]
-repo: superyngo/Wenget
+repo: superyngo/wenget
 featured: true
 order: 1
 stars: 0
-version: v3.4.1
+version: v3.8.7
 ---
 
 ## Overview
@@ -21,6 +21,7 @@ under `~/.wenget/`.
 
 - One-line remote installation for Windows, macOS, and Linux
 - Auto-update to the latest GitHub Release
+- SHA-256 checksum verification for downloaded release assets
 - Bucket system for organizing packages and scripts
 - Script support for PowerShell, Bash, and Python
 - Smart cross-bucket search and platform detection
