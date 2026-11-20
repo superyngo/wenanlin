@@ -22,10 +22,8 @@ npm run build   # astro build + pagefind index
 - Build output directory: `dist`
 - Optional env var `GITHUB_TOKEN` (read-only) if GitHub API rate limits are hit during build.
 
-## Post-setup checklist
+## Configuration
 
-- Enable Discussions on the repo and configure Giscus IDs in `src/components/Giscus.astro`.
-- Add the Cloudflare Web Analytics token in `src/components/BaseHead.astro`.
-- Set the production domain in `astro.config.mjs` (`site`).
-- Update social links in `src/components/Footer.astro` and `Header.astro`.
-- Replace `public/og-default.png` with the real default share image.
+Site settings live in code: Giscus IDs in `src/components/Giscus.astro`, the Cloudflare Web Analytics token in `src/components/BaseHead.astro`, the production domain in `astro.config.mjs` (`site`), social links in `src/components/Footer.astro` and `Header.astro`, and the default share image at `public/og-default.png`.
+
+Documentation index: [CONTEXT.md](CONTEXT.md).

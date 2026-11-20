@@ -2,7 +2,13 @@
 
 All notable changes to this project are documented here.
 
-## Unreleased
+## [Unreleased]
+
+### 2026-11-20 — Adopt repo-docs layout
+
+- Add `CONTEXT.md` (`Profile: dev`), `docs/reference/glossary.md`, folder README indexes, `docs/plan/BACKLOG.md`, and ADR 0001 (Chinese spec kept as written).
+- Move `docs/superpowers/specs/2026-06-03-studio-website-design.md` → `docs/spec/2026-06-03-studio-website.md` and `docs/superpowers/plans/2026-06-03-studio-website.md` → `docs/plan/2026-06-03-studio-website.md`; add `Status: Shipped (2026-06-04)` to both.
+- Rename the `## Unreleased` heading to `## [Unreleased]`; replace the stale README post-setup checklist with a Configuration section; gitignore `docs/tmp/*-scratch/`.
 
 ### 2026-09-02 — Refresh production pages to latest releases
 
@@ -62,7 +68,7 @@ All notable changes to this project are documented here.
 
 ### 2026-06-04 — Initial studio website build
 
-Built the minimalist editorial studio website as an Astro 5 static site for Cloudflare Pages, executed task-by-task from `docs/superpowers/plans/2026-06-03-studio-website.md` with spec-compliance + code-quality review after each task.
+Built the minimalist editorial studio website as an Astro 5 static site for Cloudflare Pages, executed task-by-task from `docs/plan/2026-06-03-studio-website.md` with spec-compliance + code-quality review after each task.
 
 - **Scaffold & tooling:** Astro 5 project, strict TypeScript, Vitest, `@astrojs/sitemap`; `npm run build` runs `astro build` + Pagefind indexing.
 - **Content collections:** `blog` and `productions` Markdown collections (zod schemas, git-managed) with sample content.

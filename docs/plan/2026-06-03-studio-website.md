@@ -1,4 +1,5 @@
 # Studio Website Implementation Plan
+Status: Shipped (2026-06-04)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
@@ -8,7 +9,7 @@
 
 **Tech Stack:** Astro 5, TypeScript, Vitest, Pagefind, Giscus, `@astrojs/rss`, `@astrojs/sitemap`, `astro-og-canvas`, Fontsource, Cloudflare Pages + Cloudflare Web Analytics.
 
-**Spec:** `docs/superpowers/specs/2026-06-03-studio-website-design.md`
+**Spec:** `docs/spec/2026-06-03-studio-website.md`
 
 ---
 
